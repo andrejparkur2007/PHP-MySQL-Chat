@@ -1,14 +1,5 @@
-<!-- пхп start -->
 <?php
-    // session_start();
-    // if(empty($_SESSION['user'])) {
-    //     echo '<script type="text/JavaScript">alert("Войдите в аккаунт")</script>';
-    //     echo '<script type="text/JavaScript">window.location.replace("../main.php");</script>';
-    //     exit();
-    // }
-?>
-<?php
-    $connect = new PDO("mysql:host-localhost; dbname-register, charset-utf-8", 'root', '');
+    $connect = new PDO("mysql:host-localhost; dbname-name, charset-utf-8", 'user', 'pass');
     
 // date_default_timezone_set('Europe/Riga');
 
@@ -16,12 +7,12 @@ if (isset($_POST['username'])) {
     $username = $_POST['username'];
     $comment = $_POST['comment'];
     $date = date('Y-m-d H:i:s');
-    $query = $connect->query("INSERT INTO register.comments (username, comment, date) VALUES ('$username', '$comment', '$date')");
+    $query = $connect->query("INSERT INTO db_name.comments (username, comment, date) VALUES ('$username', '$comment', '$date')");
 }
 ?>
 <?php
     session_start();
-    $conn = mysqli_connect('localhost', 'root', '', 'register');
+    $conn = mysqli_connect('host', 'user', 'pass', 'db_name');
 
     $login = $_POST['login'];
     $pass = $_POST['pass'];
@@ -66,10 +57,10 @@ if (isset($_POST['username'])) {
     <title>Чат Skladplay</title>
 </head>
 <body>
-<p><button style="color: red;" type="button" id="login-btn_chat">Login via SkladPlay</button></p>
+<p><button style="color: red;" type="button" id="login-btn_chat">Login SkladPlay</button></p>
     <form action="" method="POST">
         <input type="text" name="username" placeholder="Ваше имя" value="<?php echo $_POST['login']; ?>" title="Ваше имя (будет отображаться в чате)" required>
-        <textarea name="comment" cols="30" rows="5" placeholder="Сообщение (ПИСАТЬ ТОЛЬКО НА АНГЛИЙСКОМ ЯЗЫКЕ)" required title="Сообщение (Будет отображатся прямо в таблице)" style="font-family: Arial;"></textarea>
+        <textarea name="comment" cols="30" rows="5" placeholder="Сообщение" required title="Сообщение (Будет отображатся прямо в таблице)" style="font-family: Arial;"></textarea>
         <input type="submit">
     </form>
 
